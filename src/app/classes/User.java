@@ -46,11 +46,21 @@ public abstract class User {
 
 //----------------------------------------------------------------------
 
+    public boolean comprovaLogIn(ArrayList<User> usuaris) {
+        for (User thisUser : usuaris) {
+            if (this.getUsername().equals(thisUser.getUsername().toString()) && this.getPassword().equals(thisUser.getPassword().toString())) {
+                return true;
+            }
+        }
+        System.out.println("   Usuari no existent!!!");
+        return false;
+    }
 
     public abstract void menu();
     public abstract void addEditor(User editor);
     public abstract void mostraEditorSeguint();
     public abstract void mostraMur(ArrayList<Post> posts);
-    
+    public abstract boolean seguirEditor(ArrayList<User> usuaris, String seguir);
     public abstract void mostraEditorsNoSeguits(ArrayList<User> usuaris);
+    public abstract void usuariAfegit();
 }

@@ -62,6 +62,11 @@ public class Post {
 
 //----------------------------------------------------------------------
 
+    public static Post createpost(User usuariPostm, String[] post) {
+        Post newPost = new Post(usuariPostm, post[0], post[1], LocalDateTime.now());
+        newPost.setAgeRestriction(post[2]);
+        return newPost;
+    }
 
 
 

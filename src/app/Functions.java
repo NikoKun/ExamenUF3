@@ -36,17 +36,6 @@ public class Functions {
         }
     }
 
-    public static boolean comprovaLogIn(String[] user, ArrayList<User> usuaris) {
-        for (User thisUser : usuaris) {
-            if (user[0].equals(thisUser.getUsername().toString()) && user[1].equals(thisUser.getPassword().toString())) {
-                return true;
-            }
-        }
-        System.out.println("   Usuari no existent!!!");
-        return false;
-    }
-
-
     public static String comprovaRol(String username, ArrayList<User> usuaris){
         String rol = "";
         for (User thisUser : usuaris) {
@@ -137,33 +126,9 @@ public class Functions {
         posts.remove(Integer.parseInt(index)-1);
     }
 
-    public static void usuariAfegit() {
-        System.out.println();
-        System.out.println("   USUARI AFEGIT CORRECTAMENT...");
-        System.out.println();
-    }
 
-    public static boolean  seguirEditor(String[] user, ArrayList<User> usuaris, String seguir){
-        for (User meuUsuari : usuaris) {
-            if (user[0].equals(meuUsuari.getUsername())){
-                for (User thisUser : usuaris) {
-                    if (seguir.equals(thisUser.getUsername().toString()) && (thisUser.getRol().equals("editor") || thisUser.getRol().equals(""))) {
-                        meuUsuari.addEditor(thisUser);
-                        System.out.println();
-                        System.out.println("   USUARI SEGUIT CORRECTAMENT");
-                        System.out.println();
-                        return true;
-                    }
-                }
-            }
-        }
-        if (!seguir.equals("")){
-            System.out.println();
-            System.out.println("   EDITOR NO TROVAT...");
-            System.out.println();
-        }
-        return false;
-    }
+
+
 
 
 

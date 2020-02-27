@@ -37,6 +37,11 @@ public class AdminUser extends User {
     }
 
     @Override
+    public boolean seguirEditor(ArrayList<User> usuaris, String seguir){
+        return false;
+    }
+
+    @Override
     public void mostraMur(ArrayList<Post> posts){
         System.out.println();
         for (Post thisPost:posts){
@@ -49,5 +54,13 @@ public class AdminUser extends User {
 
     @Override
     public void mostraEditorsNoSeguits(ArrayList<User> usuaris){
+    }
+
+
+    @Override
+    public void usuariAfegit() {
+        System.out.println();
+        System.out.println("   USUARI ADMINISTRADOR AFEGIT CORRECTAMENT...");
+        System.out.println();
     }
 }

@@ -47,12 +47,12 @@ public class App {
         AdminUser admUser = new AdminUser(admin[0], admin[1]);
         admUser.setRol("");
         usuaris.add(admUser);
-
-        Functions.usuariAfegit();
+        admUser.usuariAfegit();
 
         while (!endProgram){
             Functions.noUserMenu();
             String menu = System.console().readLine("   - ");
+            boolean correcte = false;
             System.out.println(sep);
             switch (menu) {
                 case "1":
@@ -63,7 +63,12 @@ public class App {
                         System.out.println("   Introdueix la teva contrasenya: ");
                         user[1] = System.console().readLine("   - ");
                         System.out.println();
-                    } while (!Functions.comprovaLogIn(user, usuaris));
+                        for (User meuUsuari:usuaris){
+                            if (user[0].equals(meuUsuari.getUsername())){
+                                correcte = meuUsuari.comprovaLogIn( usuaris);
+                            }
+                        }
+                    } while (!correcte);
 
 
                     logOut = false;
@@ -76,9 +81,9 @@ public class App {
                         menu = System.console().readLine("   - ");
                         System.out.println(sep);
                         switch (menu) {
-                            case "1":
-                                // Seguir a un editor nou
+                            case "1":               // Seguir a un editor nou
                                 String seguir = "";
+                                correcte = false;
                                 do {
                                     System.out.println("   Introdueix el nom de l'editor a seguir: (Enter per llistar-los / 0 per sortir)");
                                     seguir = System.console().readLine("   - ");
@@ -89,7 +94,12 @@ public class App {
                                     if (seguir.equals("0")){
                                         break;
                                     }
-                                } while (!Functions.seguirEditor(user, usuaris, seguir));
+                                    for (User meuUsuari:usuaris){
+                                        if (usuariPost.getUsername().equals(meuUsuari.getUsername())){
+                                            correcte = meuUsuari.seguirEditor(usuaris, seguir);
+                                        }
+                                    }
+                                } while (!correcte);
                             break;
                             case "2":
                                 // Veure editors que segueixes
@@ -130,13 +140,13 @@ public class App {
                                     post[2] = System.console().readLine("   - ");
                                 } while (!Functions.restringitono(post[2]));
 
-                                Post newPost = new Post(usuariPost, post[0], post[1], LocalDateTime.now());
-                                newPost.setAgeRestriction(post[2]);
-                                posts.add(newPost);
+                                posts.add(Post.createpost(usuariPost, post));
+
                             break;
                             case "2":
                                 // Seguir a un editor nou
                                 String seguir = "";
+                                correcte = false;
                                 do {
                                     System.out.println("   Introdueix el nom de l'editor a seguir: (Enter per llistar-los / 0 per sortir)");
                                     seguir = System.console().readLine("   - ");
@@ -147,7 +157,12 @@ public class App {
                                     if (seguir.equals("0")){
                                         break;
                                     }
-                                } while (!Functions.seguirEditor(user, usuaris, seguir));
+                                    for (User meuUsuari:usuaris){
+                                        if (usuariPost.getUsername().equals(meuUsuari.getUsername())){
+                                            correcte = meuUsuari.seguirEditor(usuaris, seguir);
+                                        }
+                                    }
+                                } while (!correcte);
                             break;
                             case "3":
                                 // Veure editors que segueixes
@@ -254,8 +269,8 @@ public class App {
                     ReaderUser newUser = new ReaderUser(userRegister[0], userRegister[1], edatUsuari);
                     newUser.setAgeRestriction();
                     usuaris.add(newUser);
+                    newUser.usuariAfegit();
                     
-                    Functions.usuariAfegit();
                 break;
                 case "0":
                     endProgram = true;

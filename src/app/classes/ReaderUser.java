@@ -48,6 +48,7 @@ public class ReaderUser extends User {
         System.out.println("|-------------------------------------------------|");
     }
 
+
     @Override
     public void addEditor(User editor) {
         ArrayList<User> nouUsuari = new ArrayList<User>();
@@ -71,6 +72,30 @@ public class ReaderUser extends User {
             System.out.println();
         }
         System.out.println();
+    }
+
+
+    @Override
+    public boolean  seguirEditor(ArrayList<User> usuaris, String seguir){
+        for (User meuUsuari : usuaris) {
+            if (this.getUsername().equals(meuUsuari.getUsername())){
+                for (User thisUser : usuaris) {
+                    if (seguir.equals(thisUser.getUsername().toString()) && (thisUser.getRol().equals("editor") || thisUser.getRol().equals(""))) {
+                        meuUsuari.addEditor(thisUser);
+                        System.out.println();
+                        System.out.println("   USUARI SEGUIT CORRECTAMENT");
+                        System.out.println();
+                        return true;
+                    }
+                }
+            }
+        }
+        if (!seguir.equals("")){
+            System.out.println();
+            System.out.println("   EDITOR NO TROVAT...");
+            System.out.println();
+        }
+        return false;
     }
 
     @Override
@@ -122,6 +147,13 @@ public class ReaderUser extends User {
                 System.out.println();
             }
         }
+        System.out.println();
+    }
+
+    @Override
+    public void usuariAfegit() {
+        System.out.println();
+        System.out.println("   USUARI LECTOR AFEGIT CORRECTAMENT...");
         System.out.println();
     }
 
