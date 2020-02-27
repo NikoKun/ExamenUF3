@@ -10,12 +10,11 @@ public class Post {
 
 //----------------------------------------------------------------------
 
-    public Post(User user, String title, String content, LocalDateTime date, boolean ageRestriction) {
+    public Post(User user, String title, String content, LocalDateTime date) {
         this.user = user;
         this.title = title;
         this.content = content;
         this.date = date;
-        this.ageRestriction = ageRestriction;
     }
 
 //----------------------------------------------------------------------
@@ -52,14 +51,17 @@ public class Post {
     }
 
 
-    public boolean isAgeRestriction() {
+    public boolean getAgeRestriction() {
         return ageRestriction;
     }
-    public void setAgeRestriction(boolean ageRestriction) {
-        this.ageRestriction = ageRestriction;
+    public void setAgeRestriction(String siOno) {
+        if (siOno.equalsIgnoreCase("si")){
+            this.ageRestriction = true;
+        }
     }
 
 //----------------------------------------------------------------------
+
 
 
 

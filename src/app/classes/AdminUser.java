@@ -1,5 +1,6 @@
 package app.classes;
 
+import java.util.ArrayList;
 
 public class AdminUser extends User {
 
@@ -25,5 +26,28 @@ public class AdminUser extends User {
         System.out.println("|                                                 |");
         System.out.println("|       0 - Log Out                               |");
         System.out.println("|-------------------------------------------------|");
+    }
+
+    @Override
+    public void addEditor(User editor) {
+    }
+
+    @Override
+    public void mostraEditorSeguint(){
+    }
+
+    @Override
+    public void mostraMur(ArrayList<Post> posts){
+        System.out.println();
+        for (Post thisPost:posts){
+            System.out.println((posts.indexOf(thisPost)+1)+" - Post creat per "+thisPost.getUser().getUsername()+" el día "+thisPost.getDate().getDayOfMonth()+"-"+thisPost.getDate().getMonthValue()+"-"+thisPost.getDate().getYear()+" a les "+thisPost.getDate().getHour()+":"+thisPost.getDate().getMinute()+" hores");
+            System.out.println("     "+thisPost.getTitle()+":");
+            System.out.println("     "+thisPost.getContent());
+            System.out.println();
+        }
+    }
+
+    @Override
+    public void mostraEditorsNoSeguits(ArrayList<User> usuaris){
     }
 }

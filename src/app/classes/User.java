@@ -48,4 +48,9 @@ public abstract class User {
 
 
     public abstract void menu();
+    public abstract void addEditor(User editor);
+    public abstract void mostraEditorSeguint();
+    public abstract void mostraMur(ArrayList<Post> posts);
+    
+    public abstract void mostraEditorsNoSeguits(ArrayList<User> usuaris);
 }
